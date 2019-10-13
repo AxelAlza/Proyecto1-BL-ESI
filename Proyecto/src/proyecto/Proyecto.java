@@ -12,7 +12,9 @@ public class Proyecto {
 		int op2;
 		int op;
 		Menu menu = new Menu();
-
+		Habitaciones H = new Habitaciones();
+int [] numerodehabitaciones = new int[3];
+String [] nombredehabitaciones = new String [3];
 		do {
 			
 			menu.principal();
@@ -28,6 +30,8 @@ public class Proyecto {
 
 				case 1:
 					System.out.println("Usted eligio Registrar");
+					numerodehabitaciones [0] = H.registrarnumero();
+					nombredehabitaciones [0] = H.registronombre();
 					break;
 				case 2:
 					System.out.println("Usted eligio Modificar");
