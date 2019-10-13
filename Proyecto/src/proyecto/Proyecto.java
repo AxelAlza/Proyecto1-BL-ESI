@@ -2,25 +2,22 @@ package proyecto;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Proyecto {
 
 	public static void main(String[] args) {
 
 		// TODO Auto-generated method stub
-		
+
 		Scanner dato = new Scanner(System.in);
 		int op2;
 		int op;
+		Menu menu = new Menu();
 
 		do {
-
-			System.out.println("Menu");
-			System.out.println("");
-			System.out.println("1-Habitaciones");
-			System.out.println("2-Clientes");
-			System.out.println("3-Reservas");
-			System.out.println("0-Salir");
-
+			
+			menu.principal();
 			op = dato.nextInt();
 
 			switch (op) { // MENU PRINCIPAL
