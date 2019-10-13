@@ -2,8 +2,6 @@ package proyecto;
 
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 public class Proyecto {
 
 	public static void main(String[] args) {
@@ -21,16 +19,9 @@ public class Proyecto {
 			op = dato.nextInt();
 
 			switch (op) { // MENU PRINCIPAL
-
+         
 			case 1: // MENU HABITACIONES
-
-				System.out.println("1-Registrar");
-				System.out.println("2-Modificar");
-				System.out.println("3-Eliminar");
-				System.out.println("4-Listar todo");
-				System.out.println("5-Buscar");
-				System.out.println("0-Volver");
-
+				menu.habitaciones();
 				op2 = dato.nextInt();
 
 				switch (op2) { // SWITCH HABITACIONES
@@ -57,16 +48,10 @@ public class Proyecto {
 					System.out.println("Usted no selecciono una opcion valida");
 
 				}
-
+			 
 			case 2: // MENU CLIENTES
 
-				System.out.println();
-				System.out.println("1-Registrar");
-				System.out.println("2-Modificar");
-				System.out.println("3-Eliminar");
-				System.out.println("4-Listar Todos");
-				System.out.println("5-Buscar por CI");
-				System.out.println("0-Volver");
+	        menu.cliente();
 
 				op2 = dato.nextInt();
 
@@ -95,12 +80,7 @@ public class Proyecto {
 				}
 
 			case 3: // MENU RESERVAS
-
-				System.out.println("1-Reservas");
-				System.out.println("2-Lista de habitaciones y clientes");
-				System.out.println("3-Consultado de habitaciones");
-				System.out.println("0-Volver");
-
+                menu.reservas();
 				op2 = dato.nextInt();
 
 				switch (op2) { // SWITCH RESERVAS
