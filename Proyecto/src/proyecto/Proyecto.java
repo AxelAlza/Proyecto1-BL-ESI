@@ -7,21 +7,21 @@ public class Proyecto {
 	public static void main(String[] args) {
 
 		// TODO Auto-generated method stub
-
+		int inc = 0;
 		Scanner dato = new Scanner(System.in);
 		int op2;
 		int op;
 		Menu menu = new Menu();
 		Habitaciones H = new Habitaciones();
-int [] numerodehabitaciones = new int[3];
-String [] nombredehabitaciones = new String [3];
+		int[] numerodehabitaciones = new int[3];
+		String[] nombredehabitaciones = new String[3];
 		do {
-			
+
 			menu.principal();
 			op = dato.nextInt();
 
 			switch (op) { // MENU PRINCIPAL
-         
+
 			case 1: // MENU HABITACIONES
 				menu.habitaciones();
 				op2 = dato.nextInt();
@@ -29,18 +29,62 @@ String [] nombredehabitaciones = new String [3];
 				switch (op2) { // SWITCH HABITACIONES
 
 				case 1:
+
 					System.out.println("Usted eligio Registrar");
-					numerodehabitaciones [0] = H.registrarnumero();
-					nombredehabitaciones [0] = H.registronombre();
+					do {
+
+						if (numerodehabitaciones[inc] == 0) {
+
+							numerodehabitaciones[inc] = H.registrarnumero();
+
+							nombredehabitaciones[inc] = H.registronombre();
+
+							break;
+
+						} else {
+							inc++;
+						}
+					} while (inc <= 2);
+
 					break;
 				case 2:
 					System.out.println("Usted eligio Modificar");
+					System.out.println("Seleccione la posicion a modificar");
+
+					for (int i = 0; i <= 2; i++) {
+						System.out.println("Habitacion numero " + i);
+						System.out.println(numerodehabitaciones[i]);
+						System.out.println(nombredehabitaciones[i]);
+					}
+
+					op2 = dato.nextByte();
+					numerodehabitaciones[op2] = H.registrarnumero();
+					nombredehabitaciones[op2] = H.registronombre();
+
 					break;
 				case 3:
 					System.out.println("Usted eligio Eliminar");
+					for (int i = 0; i <= 2; i++) {
+						System.out.println("Habitacion numero " + i);
+						System.out.println(numerodehabitaciones[i]);
+						System.out.println(nombredehabitaciones[i]);
+					}
+
+					op2 = dato.nextByte();
+					numerodehabitaciones[op2] = 0;
+					nombredehabitaciones[op2] = null;
+
 					break;
 				case 4:
+
 					System.out.println("Usted eligio Listar todo");
+					for (int i = 0; i <= 2; i++) {
+						System.out.println("Habitacion nro " + i);
+						System.out.println(numerodehabitaciones[i]);
+						System.out.println(nombredehabitaciones[i]);
+
+					}
+
 					break;
 				case 5:
 					System.out.println("Usted eligio Buscar");
@@ -52,10 +96,10 @@ String [] nombredehabitaciones = new String [3];
 					System.out.println("Usted no selecciono una opcion valida");
 
 				}
-			 
+
 			case 2: // MENU CLIENTES
 
-	        menu.cliente();
+				menu.cliente();
 
 				op2 = dato.nextInt();
 
@@ -84,7 +128,7 @@ String [] nombredehabitaciones = new String [3];
 				}
 
 			case 3: // MENU RESERVAS
-                menu.reservas();
+				menu.reservas();
 				op2 = dato.nextInt();
 
 				switch (op2) { // SWITCH RESERVAS
