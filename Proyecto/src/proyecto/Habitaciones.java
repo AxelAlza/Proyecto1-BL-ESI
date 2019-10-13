@@ -13,7 +13,7 @@ return numero;
 }
 public String registronombre() {
 String nombre;
-System.out.println("Ingrese el nombre de habitacion");
+System.out.println("Ingrese la clase de la habitacion de habitacion (Suite, Comun , Etc)");
 nombre = dato.next();
 
 

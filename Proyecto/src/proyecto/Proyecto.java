@@ -15,6 +15,7 @@ public class Proyecto {
 		Habitaciones H = new Habitaciones();
 		int[] numerodehabitaciones = new int[3];
 		String[] nombredehabitaciones = new String[3];
+
 		do {
 
 			menu.principal();
@@ -88,6 +89,16 @@ public class Proyecto {
 					break;
 				case 5:
 					System.out.println("Usted eligio Buscar");
+					System.out.println("Escriba la clase o el numero de su habitacion");
+					String buscar = dato.next();
+					for (int i = 0; i <= 2; i++) {
+						if (nombredehabitaciones[i].contains(buscar)
+								|| buscar.contains(String.valueOf(numerodehabitaciones[i])))
+						System.out.println("Habitacion nro " + i);
+						System.out.println(numerodehabitaciones[i]);
+						System.out.println(nombredehabitaciones[i]);
+					}
+
 					break;
 				case 0:
 					System.out.println("Usted eligio Volver");
@@ -96,6 +107,7 @@ public class Proyecto {
 					System.out.println("Usted no selecciono una opcion valida");
 
 				}
+				break;
 
 			case 2: // MENU CLIENTES
 
@@ -126,6 +138,7 @@ public class Proyecto {
 				default:
 					System.out.println("Usted selecciono una opcion valida");
 				}
+				break;
 
 			case 3: // MENU RESERVAS
 				menu.reservas();
@@ -146,7 +159,7 @@ public class Proyecto {
 					break;
 
 				}
-
+				break;
 			}
 
 		} while (true);
