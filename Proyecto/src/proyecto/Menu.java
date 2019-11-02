@@ -1,7 +1,24 @@
 package proyecto;
 
 public class Menu {
-
+  
+	 public static void Continuar()
+	 { 
+	        System.out.println("Preionar Enter para continuar...");
+	        try
+	        {
+	            System.in.read();
+	        }  
+	        catch(Exception e)
+	        {}  
+	 }
+	
+	public static void limpiar() {
+    	for (int i = 0; i <=100; i++) {
+			System.out.println("");
+		}
+    }
+	
 	public void principal() {
 		System.out.println("MENU PRINCIPAL:");
 		System.out.println("--------------");
@@ -42,6 +59,7 @@ public class Menu {
 		System.out.println("1-Reservas");
 		System.out.println("2-Lista de habitaciones y clientes");
 		System.out.println("3-Consultado de habitaciones");
+		System.out.println("4-Liberar");
 		System.out.println("0-Volver");
 		System.out.println("--------------");
 	}

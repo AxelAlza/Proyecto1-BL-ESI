@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 public class Habitaciones {
 
-	private Scanner dato = new Scanner(System.in);
-	private ArrayList<Habitacion> H = new ArrayList<Habitacion>();
+	static Scanner dato = new Scanner(System.in);
+	static ArrayList<Habitacion> H = new ArrayList<Habitacion>();
 
 	public class Habitacion {
 
 		int nro_habitacion;
 		String clase_habitacion;
+		boolean reservado = false;
 
 		private Habitacion() {
 
@@ -27,53 +28,80 @@ public class Habitaciones {
 		}
 	}
 
-	public void registrar_habitacion() {
+	public static Habitacion getHabitacion() {
+		Menu.limpiar();
+		listar_habitaciones(3, null);
+		System.out.println("Seleccione que habitacion quiere reservar");
+		int op = dato.nextInt();
+		if (H.get(op - 1).reservado != true) {
+			H.get(op - 1).reservado = true;
+			return H.get(op - 1);
+		}
+		else {
+			throw new IllegalArgumentException("Eliga una habitacion disponible");
+		
+				
+		
+		}
+	}
 
+	public void registrar_habitacion() {
+		Menu.limpiar();
 		H.add(new Habitacion());
 
 	}
 
-	public void listar_habitaciones(int N, String busqueda) {
-
+	public static void listar_habitaciones(int N, String busqueda) {
+		Menu.limpiar();
 		if (H.isEmpty()) {
 			System.out.println("No hay habitaciones");
-		
-			//MODO NORMAL
-		}else if (N == 1 && busqueda == null) {
+
+			// MODO NORMAL
+		} else if (N == 1) {
 			for (Habitacion habitacion : H) {
-				int i = 1;
-				if (habitacion != null) {
+
+				System.out.println("////////////////////");
+				System.out.println("Habitacion N° -" + (H.indexOf(habitacion) + 1));
+				habitacion.mostrar_informacion_habitacion();
+				System.out.println("////////////////////");
+				System.out.println("--------------------");
+
+			} // MODO BUSQUEDA
+		} else if (N == 2) {
+			for (Habitacion habitacion : H) {
+				if (habitacion.clase_habitacion.contains(busqueda)
+						|| String.valueOf(habitacion.nro_habitacion).contains(busqueda)) {
 					System.out.println("////////////////////");
-					System.out.println("Habitacion N° -" + i);
+					System.out.println("Habitacion N° -" + (H.indexOf(habitacion) + 1));
 					habitacion.mostrar_informacion_habitacion();
 					System.out.println("////////////////////");
 					System.out.println("--------------------");
-					i++;
 
 				}
-			}//MODO BUSQUEDA
-		} else if (N == 2) {
+
+			} // MODO CONSULTA RESERVA
+		} else if (N == 3) {
 			for (Habitacion habitacion : H) {
-				int i = 1;
-				if (habitacion != null) {
-					if (habitacion.clase_habitacion.contains(busqueda)
-							|| String.valueOf(habitacion.nro_habitacion).contains(busqueda)) {
-						System.out.println("////////////////////");
-						System.out.println("Habitacion N° -" + i);
-						habitacion.mostrar_informacion_habitacion();
-						System.out.println("////////////////////");
-						System.out.println("--------------------");
-						i++;
-					}
+
+				System.out.println("////////////////////");
+				System.out.println("Habitacion N° -" + (H.indexOf(habitacion) + 1));
+				habitacion.mostrar_informacion_habitacion();
+				System.out.println("////////////////////");
+				if (habitacion.reservado == true) {
+					System.out.println("RESERVADO");
+				} else {
+					System.out.println("DISPONIBLE");
 				}
+				System.out.println("--------------------");
 
 			}
 		}
 	}
 
 	public void modificar_habitacion() {
+		Menu.limpiar();
 		if (!H.isEmpty()) {
-			this.listar_habitaciones(1, null);
+			Habitaciones.listar_habitaciones(1, null);
 			System.out.println("Eliga el espacio el cual modificar");
 			int op = dato.nextInt();
 			H.set(op - 1, new Habitacion());
@@ -84,8 +112,9 @@ public class Habitaciones {
 	}
 
 	public void eliminar_habitacion() {
+		Menu.limpiar();
 		if (!H.isEmpty()) {
-			this.listar_habitaciones(1, null);
+			Habitaciones.listar_habitaciones(1, null);
 			System.out.println("Eliga el espacio el cual Eliminar");
 			int op = dato.nextInt();
 			H.remove(op - 1);
@@ -95,7 +124,7 @@ public class Habitaciones {
 	}
 
 	public void buscar_habitacion() {
-
+		Menu.limpiar();
 		System.out.println("Ingrese la clase o el numero de habitacion que quiera buscar");
 		String op = dato.next();
 		listar_habitaciones(2, op);
